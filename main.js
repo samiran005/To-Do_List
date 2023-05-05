@@ -1,124 +1,225 @@
+/* ******************************************************* */
+/* ******************************************************* */
+//--> Main code for the todo list
+function todoItem(title){
+    const temp = {};
+    temp.title = title;
+    temp.status = 'No';
+
+    return temp;
+}
+
+const todoText = document.querySelector('#todo-list');
+const add = document.querySelector('#add');
+const todoHolder = document.querySelector('.todo-holder');
+
+const data = [];
+
+function addItems(){
+    if(todoText.value === '') return; //for not to add empty items in list
+    data.push(todoItem(todoText.value));
+
+    todoText.value = ''; //for empty the textArea for next items
+
+    todoHolder.innerHTML = ''; //for clear the todoHolder before rerander using forEach
+    data.forEach((todo)=>{
+        todoHolder.innerHTML += `<div class="todo-items">
+        <p>${todo.title}</p>
+        <button class="done">Done</button>
+    </div>`
+    })
+}
+
+add.addEventListener('click', addItems);
+
+/* ******************************************************* */
+/* ******************************************************* */
+
+
+
 // const arr1 = [1,2,3,5,9];
 // const arr2 = arr1;
-// // console.log(arr1, arr2 );
+// console.log(arr1, arr2);
+
 // arr1.push(55);
-// // // console.log(arr1, arr2 );
-// // /* Primetive way to copy an array*/
-// const arr3 = arr1.slice(0).concat(2,6,8,9);
-// console.log(arr3);
+// console.log(arr1, arr2);
+
+
+// const arr1 = [1,2,3,5,9];
+
+// //primative way of copy an array 
+// const arr3 = arr1.slice(0).concat([9,8,6]);
+// console.log(arr1)
+// console.log(arr3)
+
 // arr1.push(99);
-// console.log(arr1);
+
+// console.log(arr1)
+// console.log(arr3)
+
+//concat : join two array
+// const arr1 = [1,2]
+// const arr2 = [6,9]
+
+// const arr3 = arr1.concat(arr2);
 // console.log(arr3);
 
-// /*** concat is used to join two array */
-// const arr1 = [1,3,5];
-// const arr2 = [5,3,1,8];
-// // const arr3 = arr1.concat([8,5,9,4]);
-// const arr3 = [5,9,6].concat(arr2);
-// const arr3 = [5,9,6].concat(arr2,0,6,9);
 
 
-// console.log(arr3); 
+// const arr = [9,6,7,4]
 
-// primetive way to copy an array
-// const arr1 = [1,3,5];
-// const newarr = [].concat(arr1);
-// console.log(arr1);
-// console.log(newarr);
-// arr1.push(55);
-// console.log(arr1);
-// console.log(newarr);
-// '...' is spread operatotr ()
-// const arr1 = [8,9,7,6];
-// const newArr = [1,1,2,...arr1,8,7]; // Spread operator (...)
-// console.log(arr1, newArr);
-// arr1.push(55);
-// console.log(arr1, newArr);
-/* ****OBJECT**** */
-/*1. array is good but not sufficient for the real world Data
-2. Object store key-value pairs
-3. Object don't have an index
-4. Reference type
-5. we can't use arrow function in object */
+// //primative way of copy an array
+// const newArr = [].concat(arr)
 
-// const obj1 = {
-// name: 'soma chitrakar', // data "obj works on key value"
-// age: 22, // data
-// func(){ // method
-// console.log('hi dear this is me !!!!!!!!')
-// }
-// }
-// // // console.log(obj1.name);// call by dot notatiom
-// // // console.log(obj1.age);
-// // // console.log(obj1);
-// console.log(obj1['name']);// call by bracket notation
-// console.log(obj1['age']);
+// console.log(arr)
+// console.log(newArr)
 
-// obj1.func();
-// function func1()
-// {
-//     console.log('hi dear this is me');
+// arr.push(66)
+
+// console.log(arr)
+// console.log(newArr)
+
+
+// //'...' is spread operator
+// const array = [8,9,7,6];
+
+// const newArr = [...array];
+
+// console.log(array, newArr);
+
+// array.push(55);
+
+// console.log(array, newArr);
+
+//**** Objects ****
+/*
+1. Array is good but not sufficient for the real world data.
+2. Object store key-value Pairs.
+3. Objects don't have an index.
+4. Referance Type
+*/
+
+// var somthing = 'nothing';
+
+// console.log(window)
+
+// function func1(){
+//     console.log('hi there this is me !!')
 // }
 // func1();
 // window.func1();
+
 // const obj1 = {
-// 'full name': 'soma chitrakar', // data "obj works on key value"
-// age: 22, // data
-// func(){ // method
-// console.log('hi dear this is me !!!!!!!!')
+//     name: 'samiran maity',
+//     age: 23,
+//     func(){
+//         console.log('hi this is me !!!')
+//     } 
 // }
-// }
-// console.log(obj1['full name'])
-/*** After create a function , we want to return an object through the function call by passing arguments***/
-// function person(name,age){
-//     const temp = {}
-//     temp.name = name; // key value
-//     temp.age = age;  // key value
-//     temp.about = function()
-//     {
-//         console.log('this is me !!!!!!!!');
+
+// obj1.func() 
+
+
+// const obj2 = {
+//     'full name': 'samiran maity',
+//     func(){
+
 //     }
+// }
+
+// console.log(obj2['name']);
+// console.log(obj2['full name'])
+
+//bracket notation --> obj2['name']
+//dot notation --> obj2.name
+
+// const obj5 = {name: 's', age: 5}
+
+// console.log(obj5)
+
+// obj5.name = 'samiran';
+
+// console.log(obj5)
+
+// const firstP = person('samiran', 35);
+
+// console.log(firstP.name)
+
+// const secondP = person('soma', 12);
+
+
+// function person(name, age){
+//     const temp = {}
+
+//     temp.name = name;
+//     temp.age = age;
+//     temp.about = function(){
+//         console.log('this is me !!');
+//     }
+
 //     return temp;
 // }
-// console.log(person('soma',22)); // call whole object value
-// const firstp = person('samiran',23);
-// firstp.about();
-// person('soma',22);
-/***-----------------------------------------------------------------------------------------------------------***/
+
+
+// const firstP = 
+
 // const obj = {
-//     name: 'soma',
+//     name: 'samiran',
 //     age: 22
 // }
 
+
 // console.log(obj)
-// /**** we can add more properties & also method through like below**** */
+
 // obj.hobby = 'singing';
 // obj.func = function(){
-//     console.log('this is me!!!!!!!!!!!');
-
+//     console.log('this is me !!');
 // }
-// console.log(obj);
-// obj.func();
-// const arr =n[{id: 1},{id: 'hi'},{id: 3}];
-const fullname = document.querySelector('#name');
-const age = document.querySelector('#number');
-const btn = document.querySelector('.submit');
-// console.log(fullname,age,submit);
-function person(name,age){
-    const temp = {}
-    temp.name = name,
-    temp.age = age
-    return temp;
 
-}
-const data = [];
-btn.addEventListener('click',()=>{
-    // console.log(fullname.value);
-    // console.log(age.value);
-    // let name = fullname.value;
-    // let age = number.value;
-    data.push(person(fullname.value,age.value));
-    console.log(data);
+// console.log(obj)
+
+// obj.func()
+
+// function person(n, a){
+//     const temp = {}
+//     temp.name = n;
+//     temp.age = a;
+//     temp.about = function(){
+//         console.log('hi there this is me !!');
+//     }
+
+//     return temp;
+// }
+
+// const firstP = person('soma', 22);
+// // firstP.about();
+
+// // console.log(person('samiran',23));
+
+// const arr = [{id: 1},{id: 'hi'},{id: 3}];
+
+// console.log(arr[1].id);
+
+// const fullName = document.querySelector('#name');
+// const age = document.querySelector('#age');
+
+// const create = document.querySelector('#create');
+
+// function person(name, age){
+//     const temp = {}
+//     temp.name = name;
+//     temp.age = age;
+
+//     return temp;
+// }
+
+// const data = [];
+
+// create.addEventListener('click',()=>{
+//     data.push(person(fullName.value, age.value))
+
+//     console.log(data);
+// })
 
 
-})
+
