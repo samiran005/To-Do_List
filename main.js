@@ -14,20 +14,45 @@ const add = document.querySelector('#add');
 const todoHolder = document.querySelector('.todo-holder');
 
 const data = [];
+const doneData = []
+
+function rerander(){
+    data.forEach((todo)=>{
+            todoHolder.innerHTML += `<div class="todo-items">
+            <p>${todo.title}</p>
+            <button class="done">Done</button>
+        </div>`
+    })
+}
+
+function clickDone(){
+    const doneBtns = document.querySelectorAll('.done');
+
+    doneBtns.forEach((btn, index)=>{
+        btn.addEventListener('click',()=>{
+
+            //done data handeling and store it into an Array
+            data[index].status = 'done';
+            const done = data.splice(index,1); //remove conplete data
+            doneData.push(...done);
+
+            //Rerandaring for remaining data
+            todoHolder.innerHTML = '';
+            rerander();
+            clickDone();
+        })
+    })
+}
 
 function addItems(){
     if(todoText.value === '') return; //for not to add empty items in list
     data.push(todoItem(todoText.value));
-
     todoText.value = ''; //for empty the textArea for next items
-
+    
+    
     todoHolder.innerHTML = ''; //for clear the todoHolder before rerander using forEach
-    data.forEach((todo)=>{
-        todoHolder.innerHTML += `<div class="todo-items">
-        <p>${todo.title}</p>
-        <button class="done">Done</button>
-    </div>`
-    })
+    rerander();
+    clickDone();
 }
 
 add.addEventListener('click', addItems);
@@ -35,6 +60,22 @@ add.addEventListener('click', addItems);
 /* ******************************************************* */
 /* ******************************************************* */
 
+
+// const arr2 = [1,2,3,4,5,6];
+
+// for(let i = 0; i < arr2.length; i ++){
+//     if(arr2[i] === 2){
+//         continue;
+//     }
+//     console.log(arr2[i]);
+// }
+
+// arr2.forEach((n)=>{
+//     if(n === 3){
+//         continue;
+//     }
+// console.log(n)
+// })
 
 
 // const arr1 = [1,2,3,5,9];
