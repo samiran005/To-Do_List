@@ -12,13 +12,14 @@ function todoItem(title){
 const todoText = document.querySelector('#todo-list');
 const add = document.querySelector('#add');
 const todoHolder = document.querySelector('.todo-holder');
+const todoHolderDone = document.querySelector('.todo-holder-done');
 
 const data = [];
 const doneData = []
 
 function rerander(){
     data.forEach((todo)=>{
-            todoHolder.innerHTML += `<div class="todo-items">
+        todoHolder.innerHTML += `<div class="todo-items">
             <p>${todo.title}</p>
             <button class="done">Done</button>
         </div>`
@@ -56,6 +57,25 @@ function addItems(){
 }
 
 add.addEventListener('click', addItems);
+
+
+
+//for history of your done items
+
+function reranderHistory(){
+    doneData.forEach((todo)=>{
+        todoHolderDone.innerHTML += `<div class="todo-items-done">
+            <p>${todo.title}</p>
+        </div>`
+    })
+}
+
+const doneHistory = document.querySelector('#done-history');
+
+doneHistory.addEventListener('click', ()=>{
+    todoHolderDone.innerHTML = '';
+    reranderHistory();
+})
 
 /* ******************************************************* */
 /* ******************************************************* */

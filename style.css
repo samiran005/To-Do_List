@@ -43,7 +43,7 @@ body {
     border: 1px solid black;
 }
 
-#add {
+#add, #done-history {
     width: 20%;
     border-radius: 10px;
     cursor: pointer;
@@ -52,7 +52,7 @@ body {
 }
 
 
-.todo-holder {
+.todo-holder,.todo-holder-done {
     width: 100%;
     height: 100%;
     padding: 16px;
@@ -74,9 +74,21 @@ body {
 .todo-holder::-webkit-scrollbar-thumb {
     background-color: brown;
 }
+
+.todo-holder-done::-webkit-scrollbar {
+    width: 5px;
+}
+
+.todo-holder-done::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.todo-holder-done::-webkit-scrollbar-thumb {
+    background-color: brown;
+}
 /* ***************************** */
 
-.todo-items {
+.todo-items, .todo-items-done {
     margin-bottom: 16px;
     width: 100%;
     color: white;
@@ -99,4 +111,8 @@ body {
     border-radius: 8px;
     cursor: pointer;
     border: 1px solid black;
+}
+
+#done-history {
+    width: 80%;
 }
